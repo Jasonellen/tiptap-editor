@@ -1,6 +1,7 @@
 <template>
   <div v-if="$toolbar.show" class="umo-toolbar-container">
-    <toolbar-ribbon
+    <!-- 专业版 -->
+    <!-- <toolbar-ribbon
       v-if="$toolbar.mode === 'ribbon'"
       :menus="toolbarMenus"
       :current-menu="currentMenu"
@@ -13,7 +14,9 @@
       >
         <slot :name="`toolbar_${item}`" v-bind="props" />
       </template>
-    </toolbar-ribbon>
+    </toolbar-ribbon> -->
+
+    <!-- 经典版 -->
     <toolbar-classic
       v-if="$toolbar.mode === 'classic'"
       :menus="toolbarMenus"
@@ -88,7 +91,7 @@
           </div>
         </template>
       </t-popup>
-      <t-dropdown
+      <!-- <t-dropdown
         trigger="click"
         size="small"
         placement="bottom-right"
@@ -120,7 +123,7 @@
             </template>
           </t-dropdown-menu>
         </template>
-      </t-dropdown>
+      </t-dropdown> -->
     </div>
   </div>
   <tooltip v-else :content="t('toolbar.show')" placement="bottom-right">

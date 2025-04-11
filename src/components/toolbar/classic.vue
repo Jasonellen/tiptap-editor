@@ -63,7 +63,7 @@
         </div>
         <div class="umo-virtual-group">
           <menus-toolbar-base-import-word />
-          <menus-toolbar-base-markdown v-if="!disableItem('markdown')" />
+          <!-- <menus-toolbar-base-markdown v-if="!disableItem('markdown')" /> -->
           <menus-toolbar-base-search-replace />
         </div>
         <div class="umo-virtual-group">
@@ -90,7 +90,7 @@
           <menus-toolbar-insert-columns v-if="!disableItem('columns')" />
           <menus-toolbar-insert-tag v-if="!disableItem('tag')" />
           <menus-toolbar-insert-callout v-if="!disableItem('callout')" />
-          <menus-toolbar-insert-mention v-if="!disableItem('mention')" />
+          <!-- <menus-toolbar-insert-mention v-if="!disableItem('mention')" /> -->
           <menus-toolbar-insert-bookmark v-if="!disableItem('bookmark')" />
         </div>
         <div class="umo-virtual-group">
@@ -100,8 +100,8 @@
           <menus-toolbar-insert-text-box v-if="!disableItem('textBox')" />
         </div>
         <div class="umo-virtual-group">
-          <menus-toolbar-insert-template v-if="!disableItem('template')" />
-          <menus-toolbar-insert-web-page v-if="!disableItem('webPage')" />
+          <!-- <menus-toolbar-insert-template v-if="!disableItem('template')" /> -->
+          <!-- <menus-toolbar-insert-web-page v-if="!disableItem('webPage')" /> -->
         </div>
         <div class="virtual-group is-slot">
           <slot name="toolbar_insert" toolbar-mode="classic" />
@@ -154,19 +154,19 @@
         </div>
         <div class="umo-virtual-group">
           <menus-toolbar-tools-signature v-if="!disableItem('signature')" />
-          <menus-toolbar-tools-seal v-if="!disableItem('seal')" />
+          <!-- <menus-toolbar-tools-seal v-if="!disableItem('seal')" /> -->
         </div>
         <div class="umo-virtual-group">
-          <menus-toolbar-tools-diagrams v-if="!disableItem('diagrams')" />
-          <menus-toolbar-tools-echarts v-if="!disableItem('echarts')" />
+          <!-- <menus-toolbar-tools-diagrams v-if="!disableItem('diagrams')" /> -->
+          <!-- <menus-toolbar-tools-echarts v-if="!disableItem('echarts')" /> -->
           <!-- <menus-toolbar-tools-mind-map v-if="!disableItem('mind-map')" /> -->
-          <menus-toolbar-tools-mermaid v-if="!disableItem('mermaid')" />
+          <!-- <menus-toolbar-tools-mermaid v-if="!disableItem('mermaid')" /> -->
         </div>
-        <div class="umo-virtual-group">
+        <!-- <div class="umo-virtual-group">
           <menus-toolbar-tools-chinese-case
             v-if="!disableItem('chineseCase')"
           />
-        </div>
+        </div> -->
         <div class="virtual-group is-slot">
           <slot name="toolbar_tools" toolbar-mode="classic" />
         </div>
@@ -198,11 +198,11 @@
         <div class="umo-virtual-group">
           <menus-toolbar-export-image v-if="!disableItem('exportImage')" />
           <menus-toolbar-export-pdf v-if="!disableItem('exportPDF')" />
-          <menus-toolbar-export-text v-if="!disableItem('exportText')" />
+          <!-- <menus-toolbar-export-text v-if="!disableItem('exportText')" /> -->
         </div>
         <div class="umo-virtual-group">
-          <menus-toolbar-export-share v-if="!disableItem('share')" />
-          <menus-toolbar-export-embed v-if="!disableItem('embed')" />
+          <!-- <menus-toolbar-export-share v-if="!disableItem('share')" /> -->
+          <!-- <menus-toolbar-export-embed v-if="!disableItem('embed')" /> -->
         </div>
         <div class="virtual-group is-slot">
           <slot name="toolbar_export" toolbar-mode="classic" />

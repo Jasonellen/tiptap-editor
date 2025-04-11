@@ -79,17 +79,17 @@ watch(
 
 // 动态导入 katex 样式
 const loadTatexStyle = () => {
-  const katexStyleElement = document.querySelector('#katex-style')
-  if (
-    katexStyleElement === null &&
-    !options.value.toolbar?.disableMenuItems.includes('math')
-  ) {
-    const style = document.createElement('link')
-    style.href = `${options.value.cdnUrl}/libs/katex/katex.min.css`
-    style.rel = 'stylesheet'
-    style.id = 'katex-style'
-    document.querySelector('head')?.append(style)
-  }
+  // const katexStyleElement = document.querySelector('#katex-style')
+  // if (
+  //   katexStyleElement === null &&
+  //   !options.value.toolbar?.disableMenuItems.includes('math')
+  // ) {
+  //   const style = document.createElement('link')
+  //   style.href = `${options.value.cdnUrl}/libs/katex/katex.min.css`
+  //   style.rel = 'stylesheet'
+  //   style.id = 'katex-style'
+  //   document.querySelector('head')?.append(style)
+  // }
 }
 
 onMounted(() => {

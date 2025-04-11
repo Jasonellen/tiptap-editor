@@ -9,26 +9,27 @@
 </template>
 
 <script setup lang="ts">
+import mammoth from 'mammoth'
 const container = inject('container')
 const editor = inject('editor')
 const options = inject('options')
 
 // 动态导入 mammoth.js
 onMounted(() => {
-  const mammothScriptElement = document.querySelector('#mammoth-script')
-  if (
-    mammothScriptElement === null &&
-    options.value.toolbar?.importWord.enabled
-  ) {
-    const style = document.createElement('script')
-    style.src = `${options.value.cdnUrl}/libs/mammoth/mammoth.browser.min.js`
-    style.id = 'mammoth-script'
-    document.querySelector('head')?.append(style)
-  }
+  // const mammothScriptElement = document.querySelector('#mammoth-script')
+  // if (
+  //   mammothScriptElement === null &&
+  //   options.value.toolbar?.importWord.enabled
+  // ) {
+  //   const style = document.createElement('script')
+  //   style.src = `${options.value.cdnUrl}/libs/mammoth/mammoth.browser.min.js`
+  //   // style.src = `https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js`
+  //   style.id = 'mammoth-script'
+  //   document.querySelector('head')?.append(style)
+  // }
 })
 
 const importWord = () => {
-  // @ts-expect-error, global variable injected by script
   if (!mammoth) {
     const dialog = useAlert({
       attach: container,

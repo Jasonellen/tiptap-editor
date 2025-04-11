@@ -77,9 +77,9 @@
       <t-dropdown-item v-if="!disableItem('textBox')">
         <menus-toolbar-insert-text-box :huge="false" :tooltip="false" />
       </t-dropdown-item>
-      <t-dropdown-item v-if="!disableItem('webPage')">
+      <!-- <t-dropdown-item v-if="!disableItem('webPage')">
         <menus-toolbar-insert-web-page :huge="false" :tooltip="false" />
-      </t-dropdown-item>
+      </t-dropdown-item> -->
       <t-dropdown-item v-if="!disableItem('qrcode')">
         <menus-toolbar-tools-qrcode :huge="false" :tooltip="false" />
       </t-dropdown-item>
@@ -89,23 +89,23 @@
       <t-dropdown-item v-if="!disableItem('signature')">
         <menus-toolbar-tools-signature :huge="false" :tooltip="false" />
       </t-dropdown-item>
-      <t-dropdown-item v-if="!disableItem('seal')">
+      <!-- <t-dropdown-item v-if="!disableItem('seal')">
         <menus-toolbar-tools-seal :huge="false" :tooltip="false" />
-      </t-dropdown-item>
-      <t-dropdown-item v-if="!disableItem('diagrams')">
+      </t-dropdown-item> -->
+      <!-- <t-dropdown-item v-if="!disableItem('diagrams')">
         <menus-toolbar-tools-diagrams :huge="false" :tooltip="false" />
-      </t-dropdown-item>
-      <t-dropdown-item v-if="!disableItem('echarts')">
+      </t-dropdown-item> -->
+      <!-- <t-dropdown-item v-if="!disableItem('echarts')">
         <menus-toolbar-tools-echarts
           :huge="false"
           :tooltip="false"
           mode="add"
         />
-      </t-dropdown-item>
-      <t-dropdown-item v-if="!disableItem('mermaid')">
+      </t-dropdown-item> -->
+      <!-- <t-dropdown-item v-if="!disableItem('mermaid')">
         <menus-toolbar-tools-mermaid :huge="false" :tooltip="false" />
-      </t-dropdown-item>
-      <t-dropdown-item v-if="options.templates.length > 0">
+      </t-dropdown-item> -->
+      <!-- <t-dropdown-item v-if="options.templates.length > 0">
         <menus-button
           ico="template"
           :text="t('blockMenu.template')"
@@ -125,7 +125,7 @@
             <div class="umo-dropdown-item-label">{{ item.title }}</div>
           </t-dropdown-item>
         </t-dropdown-menu>
-      </t-dropdown-item>
+      </t-dropdown-item> -->
     </t-dropdown-menu>
   </t-dropdown>
 </template>

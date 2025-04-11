@@ -40,7 +40,7 @@
           <icon name="shortcut" />
         </t-button>
       </tooltip>
-      <tooltip :content="t('resetAll.title')">
+      <!-- <tooltip :content="t('resetAll.title')">
         <t-button
           class="umo-status-bar-button"
           variant="text"
@@ -49,9 +49,9 @@
         >
           <icon name="clear-cache" />
         </t-button>
-      </tooltip>
+      </tooltip> -->
       <div class="bar-split"></div>
-      <tooltip :content="t('poweredBy')">
+      <!-- <tooltip :content="t('poweredBy')">
         <t-button
           class="umo-status-bar-button"
           variant="text"
@@ -61,8 +61,8 @@
         >
           <icon name="home-page" />
         </t-button>
-      </tooltip>
-      <tooltip :content="t('feedback')">
+      </tooltip> -->
+      <!-- <tooltip :content="t('feedback')">
         <t-button
           class="umo-status-bar-button"
           variant="text"
@@ -72,9 +72,9 @@
         >
           <icon name="message" />
         </t-button>
-      </tooltip>
+      </tooltip> -->
       <div class="umo-status-bar-split"></div>
-      <t-popup
+      <!-- <t-popup
         v-if="editor"
         v-model="showWordCount"
         trigger="click"
@@ -120,7 +120,7 @@
             </ul>
           </div>
         </template>
-      </t-popup>
+      </t-popup> -->
     </div>
     <div class="umo-status-bar-right">
       <tooltip
@@ -211,7 +211,7 @@
           </t-button>
         </tooltip>
       </div>
-      <t-dropdown
+      <!-- <t-dropdown
         :attach="container"
         :options="langs"
         placement="top-left"
@@ -226,14 +226,14 @@
           v-text="lang"
         >
         </t-button>
-      </t-dropdown>
+      </t-dropdown> -->
     </div>
   </div>
   <div v-else class="umo-preview-bar">
-    <div v-if="countdownValue !== ''" class="umo-preview-countdown">
+    <!-- <div v-if="countdownValue !== ''" class="umo-preview-countdown">
       {{ countdownValue }}
-    </div>
-    <statusbar-countdown
+    </div> -->
+    <!-- <statusbar-countdown
       :visible="countdownSetting"
       @visible-change="(visible: boolean) => (countdownSetting = visible)"
       @countdown-change="countdownChange"
@@ -245,7 +245,7 @@
           <icon name="time" />
         </div>
       </tooltip>
-    </statusbar-countdown>
+    </statusbar-countdown> -->
     <tooltip :content="t('preview.laserPointer')">
       <div
         class="item"

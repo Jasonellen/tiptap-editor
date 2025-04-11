@@ -76,7 +76,6 @@ import type {
   SupportedLocale,
   WatermarkOption,
 } from '@/types'
-import { consoleCopyright } from '@/utils/copyright'
 import { getOpitons } from '@/utils/options'
 import { shortId } from '@/utils/short-id'
 
@@ -207,7 +206,7 @@ watch(
 // Lifecycle Hooks
 onMounted(() => {
   setTheme(options.value.theme)
-  setTimeout(consoleCopyright)
+  // setTimeout(consoleCopyright)
 })
 onBeforeUnmount(() => {
   clearAutoSaveInterval()
@@ -814,6 +813,11 @@ const saveContent = async (showMessage = true) => {
       closeBtn: true,
       offset: [0, -20],
     })
+    console.log('getHTML--', editor.value?.getHTML())
+    console.log('getJSON--', editor.value?.getJSON())
+    console.log('getText--', editor.value?.getText())
+    console.log('page.value--', page.value)
+    console.log('$document.value', $document.value)
     const success = await options.value?.onSave?.(
       {
         html: editor.value?.getHTML(),

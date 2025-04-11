@@ -10,7 +10,95 @@
 </template>
 
 <script setup lang="ts">
+import { TiptapCollabProvider } from '@hocuspocus/provider'
+import * as Y from 'yjs'
+
 import { shortId } from '@/utils/short-id'
+
+const appId = '7j9y6m10'
+const room = `room.${new Date()
+  .getFullYear()
+  .toString()
+  .slice(-2)}${new Date().getMonth() + 1}${new Date().getDate()}-ok`
+
+// ydoc and provider for Editor A
+const ydocA = new Y.Doc()
+const providerA = new TiptapCollabProvider({
+  appId,
+  name: room,
+  document: ydocA,
+})
+
+// ydoc and provider for Editor B
+const ydocB = new Y.Doc()
+const providerB = new TiptapCollabProvider({
+  appId,
+  name: room,
+  document: ydocB,
+})
+
+const colors = [
+  '#958DF1',
+  '#F98181',
+  '#FBBC88',
+  '#FAF594',
+  '#70CFF8',
+  '#94FADB',
+  '#B9F18D',
+  '#C3E2C2',
+  '#EAECCC',
+  '#AFC8AD',
+  '#EEC759',
+  '#9BB8CD',
+  '#FF90BC',
+  '#FFC0D9',
+  '#DC8686',
+  '#7ED7C1',
+  '#F3EEEA',
+  '#89B9AD',
+  '#D0BFFF',
+  '#FFF8C9',
+  '#CBFFA9',
+  '#9BABB8',
+  '#E3F4F4',
+]
+const names = [
+  'Lea Thompson',
+  'Cyndi Lauper',
+  'Tom Cruise',
+  'Madonna',
+  'Jerry Hall',
+  'Joan Collins',
+  'Winona Ryder',
+  'Christina Applegate',
+  'Alyssa Milano',
+  'Molly Ringwald',
+  'Ally Sheedy',
+  'Debbie Harry',
+  'Olivia Newton-John',
+  'Elton John',
+  'Michael J. Fox',
+  'Axl Rose',
+  'Emilio Estevez',
+  'Ralph Macchio',
+  'Rob Lowe',
+  'Jennifer Grey',
+  'Mickey Rourke',
+  'John Cusack',
+  'Matthew Broderick',
+  'Justine Bateman',
+  'Lisa Bonet',
+]
+const getRandomElement = (list) => list[Math.floor(Math.random() * list.length)]
+
+const getRandomColor = () => getRandomElement(colors)
+const getRandomName = () => getRandomElement(names)
+const getInitialUser = () => {
+  return {
+    name: getRandomName(),
+    color: getRandomColor(),
+  }
+}
 
 const editorRef = $ref(null)
 const templates = [
@@ -35,14 +123,14 @@ const options = $ref({
   document: {
     title: '测试文档',
     content: localStorage.getItem('document.content') ?? '<p>测试文档</p>',
-    characterLimit: 10000,
+    characterLimit: 100000, // 限制10万字 1万->10万
   },
   page: {
     showBookmark: true,
   },
   templates,
-  cdnUrl: 'https://cdn.umodoc.com',
-  shareUrl: 'https://umodoc.com',
+  cdnUrl: '',
+  shareUrl: '',
   file: {
     // allowedMimeTypes: [
     //   'application/pdf',
@@ -53,7 +141,7 @@ const options = $ref({
   },
   ai: {
     assistant: {
-      enabled: true,
+      enabled: false,
       async onMessage() {
         return await Promise.resolve('<p>AI助手测试</p>')
       },
@@ -65,15 +153,16 @@ const options = $ref({
     avatar: 'https://tdesign.gtimg.com/site/avatar.jpg',
   },
   users: [
-    { id: 'umodoc', label: 'Umo Team' },
-    { id: 'Cassielxd', label: 'Cassielxd' },
-    { id: 'Goldziher', label: "Na'aman Hirschfeld" },
-    { id: 'SerRashin', label: 'SerRashin' },
-    { id: 'ChenErik', label: 'ChenErik' },
-    { id: 'china-wangxu', label: 'china-wangxu' },
-    { id: 'Sherman Xu', label: 'xuzhenjun130' },
-    { id: 'testuser', label: '测试用户' },
+    // { id: 'umodoc', label: 'Umo Team' },
+    // { id: 'Cassielxd', label: 'Cassielxd' },
+    // { id: 'Goldziher', label: "Na'aman Hirschfeld" },
+    // { id: 'SerRashin', label: 'SerRashin' },
+    // { id: 'ChenErik', label: 'ChenErik' },
+    // { id: 'china-wangxu', label: 'china-wangxu' },
+    // { id: 'Sherman Xu', label: 'xuzhenjun130' },
+    // { id: 'testuser', label: '测试用户' },
   ],
+  // 保存文档
   async onSave(content: string, page: number, document: { content: string }) {
     localStorage.setItem('document.content', document.content)
     return new Promise((resolve, reject) => {
@@ -117,6 +206,7 @@ const options = $ref({
 </script>
 
 <style>
+@import url(./assets/styles/katex.min.css);
 html,
 body {
   padding: 0;

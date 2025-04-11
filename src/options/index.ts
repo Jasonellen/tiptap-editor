@@ -32,7 +32,8 @@ const defaultOptions: UmoEditorOptions = {
   fullscreenZIndex: 10,
   dicts: defaultDicts,
   toolbar: {
-    defaultMode: 'ribbon',
+    // defaultMode: 'ribbon',
+    defaultMode: 'classic',
     menus: ['base', 'insert', 'table', 'tools', 'page', 'export'],
     disableMenuItems: [],
     importWord: {
@@ -86,7 +87,7 @@ const defaultOptions: UmoEditorOptions = {
     },
     autoSave: {
       enabled: true,
-      interval: 300000,
+      interval: 300000, // 5分钟 保存一次
     },
   },
   ai: defaultAiOptions,
