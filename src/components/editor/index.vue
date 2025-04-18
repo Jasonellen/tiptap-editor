@@ -28,6 +28,63 @@
 import { Editor, EditorContent } from '@tiptap/vue-3'
 
 import { getDefaultExtensions, inputAndPasteRules } from '@/extensions'
+import { TiptapCollabProvider } from '@hocuspocus/provider'
+import Collaboration from '@tiptap/extension-collaboration'
+import CollaborationCursor from '@tiptap/extension-collaboration-cursor'
+import * as Y from 'yjs'
+
+const appId = '7j9y6m10'
+const room = `room.${new Date()
+  .getFullYear()
+  .toString()
+  .slice(-2)}${new Date().getMonth() + 1}${new Date().getDate()}-leiniao`
+
+const ydoc = new Y.Doc()
+const provider = new TiptapCollabProvider({
+  appId,
+  name: room,
+  document: ydoc,
+})
+
+const colors = [
+  '#958DF1',
+  '#F98181',
+  '#FBBC88',
+  '#FAF594',
+  '#70CFF8',
+  '#94FADB',
+  '#B9F18D',
+  '#C3E2C2',
+  '#EAECCC',
+  '#AFC8AD',
+  '#EEC759',
+  '#9BB8CD',
+  '#FF90BC',
+  '#FFC0D9',
+  '#DC8686',
+  '#7ED7C1',
+  '#F3EEEA',
+  '#89B9AD',
+  '#D0BFFF',
+  '#FFF8C9',
+  '#CBFFA9',
+  '#9BABB8',
+  '#E3F4F4',
+]
+const names = [
+  '彭永磊是扁头',
+  '他的名字真好记'
+]
+const getRandomElement = (list) => list[Math.floor(Math.random() * list.length)]
+
+const getRandomColor = () => getRandomElement(colors)
+const getRandomName = () => getRandomElement(names)
+const getInitialUser = () => {
+  return {
+    name: getRandomName(),
+    color: getRandomColor(),
+  }
+}
 
 const destroyed = inject('destroyed')
 const page = inject('page')
@@ -61,7 +118,14 @@ const editorInstance: Editor = new Editor({
     ...options.value.document?.editorProps,
   },
   parseOptions: options.value.document?.parseOptions,
-  extensions: [...extensions, ...options.value.extensions],
+  extensions: [...extensions, ...options.value.extensions,
+    Collaboration.extend().configure({
+      document: ydoc,
+    }),
+    CollaborationCursor.extend().configure({
+      provider,
+    }),
+  ],
   onUpdate({ editor }) {
     $document.value.content = editor.getHTML()
   },
@@ -69,6 +133,7 @@ const editorInstance: Editor = new Editor({
 const editor = inject('editor')
 editor.value = editorInstance
 editor.value.storage.container = container
+
 watch(
   () => options.value,
   () => {
@@ -76,6 +141,15 @@ watch(
   },
   { immediate: true, deep: true },
 )
+
+
+onMounted(() => {
+  let currentUser = getInitialUser()
+  console.log('currentUser---',currentUser);
+  
+  localStorage.setItem('currentUser', JSON.stringify(currentUser))
+  editor.value.chain().focus().updateUser(currentUser).run()
+})
 
 // 动态导入 katex 样式
 const loadTatexStyle = () => {
@@ -100,6 +174,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   editorInstance.destroy()
 })
+
 </script>
 
 <style lang="less">
